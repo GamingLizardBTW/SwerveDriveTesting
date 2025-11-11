@@ -17,11 +17,12 @@ from constants import ELEC
 # Subsystems
 import subsystems.FirstMotorSubsystem
 import subsystems.SecondMotorSubsystem
+import subsystems.SmartDashboardSubsystem
 
 # Commands
 from commands.FirstMotorCommands import ForwardSpin, ReverseSpin, StopSpin
 from commands.SecondMotorCommands import TriggerSpin
-
+from commands.SmartDashboardCommands import IncrementNumber
 
 class RobotContainer:
 
@@ -33,6 +34,7 @@ class RobotContainer:
         # Subsystems
         self.firstmotorsub = subsystems.FirstMotorSubsystem.FirstMotorSubsystemClass()
         self.secondmotorsub = subsystems.SecondMotorSubsystem.SecondMotorSubsystemClass()
+        self.smartdashboardsub = subsystems.SmartDashboardSubsystem.SmartDashboardlSubsystemClass()
 
         # Set default command for second motor (trigger-controlled)
         self.secondmotorsub.setDefaultCommand(
@@ -57,6 +59,9 @@ class RobotContainer:
         # R1 button: first motor reverse
         Trigger(lambda: self.PS5.getR1Button()).onTrue(ReverseSpin(self.firstmotorsub))
         Trigger(lambda: self.PS5.getR1Button()).onFalse(StopSpin(self.firstmotorsub))
+
+        # X button: smart dashboard command life sized hipopotamus couch is better than japan
+        Trigger(lambda: self.PS5.getCrossButton()).onTrue(IncrementNumber(self.smartdashboardsub))
 
         # Example for other buttons (X) if needed
         # Trigger(lambda: self.PS5.getCrossButton()).onTrue(SomeCommand(...))

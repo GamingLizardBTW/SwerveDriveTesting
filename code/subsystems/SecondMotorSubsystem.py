@@ -38,5 +38,5 @@ class SecondMotorSubsystemClass(commands2.Subsystem):
 
     def get_encoder_position(self) -> float:
 
-        return self.second_motor.getRotorPosition().getValue()
+        return self.second_motor.get_rotor_position().getValue()
 

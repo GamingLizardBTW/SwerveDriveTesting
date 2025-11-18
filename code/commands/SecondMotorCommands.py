@@ -63,4 +63,4 @@ class MoveToPosition(commands2.Command):
         self.secondmotorsub.go_to_position(self.target)
 
     def isFinished(self):
-         return True
+        return True

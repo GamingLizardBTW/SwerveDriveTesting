@@ -66,8 +66,10 @@ class RobotContainer:
         # O button: update second motor encoder value onto smart dashboard
         Trigger(lambda: self.PS5.getCircleButton()).onTrue(DisplayEncoderValue(self.secondmotorsub))
 
-        # Square button: PID for second motor
-        Trigger(lambda: self.PS5.getSquareButton()).onTrue(MoveToPosition(self.secondmotorsub))
+        # Square button: Move second motor to rotation with PID
+        Trigger(lambda: self.PS5.getSquareButton()).onTrue(MoveToPosition(self.secondmotorsub, target_rotations = 5))
+
+        
 
         # Example for other buttons (X) if needed
         # Trigger(lambda: self.PS5.getCrossButton()).onTrue(SomeCommand(...))

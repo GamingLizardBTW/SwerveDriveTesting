@@ -69,6 +69,6 @@ sw_data = {
     "Second_Tolerance": 0.15,
     "Second_Speed_Tolerance": 0.2,
 
-    "FirstMotorSetpoint": 0.01,
+    "FirstMotorSetpoint": 360,
 }
 SW = namedtuple("Data", sw_data.keys())(**sw_data)

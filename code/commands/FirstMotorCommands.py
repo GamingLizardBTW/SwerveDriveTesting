@@ -81,4 +81,4 @@ class MoveToPosition(commands2.Command):
         return True
 
     def end(self, interrupted):
-        logger.info("MoveToPosition Command ended")
+        logger.info("MoveToPosition Command ended booyah")

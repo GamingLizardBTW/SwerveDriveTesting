@@ -67,7 +67,7 @@ class RobotContainer:
         Trigger(lambda: self.PS5.getCircleButton()).onTrue(DisplayEncoderValue(self.secondmotorsub))
 
         # Square button: Move first motor to rotation with PID
-        Trigger(lambda: self.PS5.getSquareButton()).whileTrue(MoveToPosition(self.firstmotorsub))
+        Trigger(lambda: self.PS5.getSquareButton()).onTrue(MoveToPosition(self.firstmotorsub))
 
         
 

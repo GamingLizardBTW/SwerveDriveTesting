@@ -39,7 +39,10 @@ class FirstMotorSubsystemClass(commands2.Subsystem):
         slot0.k_p = SW.First_kp
         slot0.k_i = SW.First_ki
         slot0.k_d = SW.First_kd
+        
+        self.first_motor.configurator.apply(config)
 
+        
         
 
     def go_forward(self):
@@ -58,9 +61,6 @@ class FirstMotorSubsystemClass(commands2.Subsystem):
 
 
     def periodic(self):
-        #Rotations
-        position = self.first_motor.get_rotor_position().value
-
         #Position in degrees
         rotations = self.first_motor.get_rotor_position().value
         degrees = rotations * 360.0
@@ -72,7 +72,7 @@ class FirstMotorSubsystemClass(commands2.Subsystem):
         #speed
         velocity = self.first_motor.get_velocity().value
 
-        wpilib.SmartDashboard.putNumber("First Rotations", position)
+        wpilib.SmartDashboard.putNumber("First Rotations", rotations)
         wpilib.SmartDashboard.putNumber("First Position Degrees", wrapped)
         #wpilib.SmartDashboard.putNumber("SecondMotor Setpoint", setpoint)
         wpilib.SmartDashboard.putNumber("First Velocity", velocity)

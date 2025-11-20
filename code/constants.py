@@ -57,7 +57,7 @@ sw_data = {
     "First_ka": 0.0,     # Acceleration feedforward raise if system needs to be faster
 
     "First_kp": 3.0,     # Too high and will cause oscillation, too low will make it not reach desired place
-    "First_ki": 0.0,     # Helps fix small errors over time 
+    "First_ki": 0.5,     # Helps fix small errors over time 
     "First_kd": 0.1,     # Stabalizing, fixes over shoot
 
     # Motion Magic

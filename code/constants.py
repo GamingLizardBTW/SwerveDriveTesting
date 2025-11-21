@@ -28,8 +28,8 @@ MECH = namedtuple("Data", mech_data.keys())(**mech_data)
 elec_data = {
   ## First motor
   "first_motor_CAN_ID": 3,
-  "first_motor_forward":0.1,
-  "first_motor_reverse":-0.1,
+  "first_motor_forward":0.5,
+  "first_motor_reverse":-0.5,
   "first_motor_stop":0.0,
 
   ## Second motor

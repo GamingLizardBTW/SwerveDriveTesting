@@ -26,7 +26,7 @@ class SecondMotorSubsystemClass(commands2.Subsystem):
 
     def run(self, speed: float):
 
-        if speed > 0 and self.is_limit_pressed():
+        if speed > 0 and not self.is_limit_pressed():
             speed = 0.0
 
         self.second_motor.set_control(

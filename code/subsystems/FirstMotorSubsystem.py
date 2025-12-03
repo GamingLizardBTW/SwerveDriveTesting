@@ -69,6 +69,6 @@ class FirstMotorSubsystemClass(commands2.Subsystem):
         #speed
         velocity = self.first_motor.get_velocity().value
 
-        wpilib.SmartDashboard.putNumber("First Rotations", rotations)
-        wpilib.SmartDashboard.putNumber("First Position Degrees", wrapped)
-        wpilib.SmartDashboard.putNumber("First Velocity", velocity)
+        wpilib.SmartDashboard.putNumber("First Motor Rotations", rotations)
+        wpilib.SmartDashboard.putNumber("First Motor Position", wrapped)
+        wpilib.SmartDashboard.putNumber("First Motor Velocity", velocity)

@@ -22,7 +22,7 @@ class  IncrementNumber(commands2.Command):
     def initialize(self):
         self.smartdashboardsub.increment_number()
         current_value = self.smartdashboardsub.get_number()
-        wpilib.SmartDashboard.putNumber("My Stored Number", current_value)
+        wpilib.SmartDashboard.putNumber("Stored Number", current_value)
         logger.info("Increment number command initialized")
 
 

@@ -74,8 +74,6 @@ class SwerveDriveSubsystemClass(commands2.Subsystem):
         # --------------- CREATE MODULES ---------------
         self.front_left  = SwerveModule(1, 2, 11, 135)
         self.front_right = SwerveModule(3, 4, 12, 45)
-        self.back_left   = SwerveModule(5, 6, 13, 225)
-        self.back_right  = SwerveModule(7, 8, 14, 315)
 
         # --------------- ROBOT GEOMETRY ---------------
         L = 0.5
@@ -83,8 +81,6 @@ class SwerveDriveSubsystemClass(commands2.Subsystem):
         self.kinematics = SwerveDrive2Kinematics(
             Translation2d(+W/2, +L/2),
             Translation2d(+W/2, -L/2),
-            Translation2d(-W/2, +L/2),
-            Translation2d(-W/2, -L/2),
         )
 
         # --------------- GYRO ---------------

@@ -17,7 +17,7 @@ class SwerveDriveCommand(commands2.Command):
         self.addRequirements(swerve_subsystem)
 
     def initialize(self):
-        logger.info("TriggerSpin Command Initialized")
+        logger.info("Swerve Drive Initialized")
 
     def execute(self):
 

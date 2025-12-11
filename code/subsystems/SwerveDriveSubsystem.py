@@ -3,7 +3,7 @@ import wpilib
 import wpimath
 from wpilib import SmartDashboard
 from wpimath.geometry import Translation2d, Rotation2d
-from wpimath.kinematics import SwerveDriveKinematics, SwerveModuleState
+from wpimath.kinematics import SwerveDrive2Kinematics, SwerveModuleState
 from phoenix6.hardware import TalonFX, CANcoder
 from phoenix6.controls import PositionVoltage, VelocityVoltage
 from phoenix6.configs import TalonFXConfiguration
@@ -81,7 +81,7 @@ class SwerveDriveSubsystemClass(wpilib.SubsystemBase):
         # --------------- ROBOT GEOMETRY ---------------
         L = 0.5
         W = 0.5
-        self.kinematics = SwerveDriveKinematics(
+        self.kinematics = SwerveDrive2Kinematics(
             Translation2d(+W/2, +L/2),
             Translation2d(+W/2, -L/2),
             Translation2d(-W/2, +L/2),
@@ -104,7 +104,7 @@ class SwerveDriveSubsystemClass(wpilib.SubsystemBase):
             )
 
         states = self.kinematics.toSwerveModuleStates(chassis)
-        SwerveDriveKinematics.desaturateWheelSpeeds(states, 4.5)
+        SwerveDrive2Kinematics.desaturateWheelSpeeds(states, 4.5)
 
         # Apply to modules
         self.front_left.set(states[0].speed, states[0].angle.radians())

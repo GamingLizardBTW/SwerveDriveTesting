@@ -10,7 +10,7 @@ This file defines constants related to your robot. These constants include:
 
 from collections import namedtuple
 from wpimath.geometry import Translation2d
-from wpimath.kinematics import SwerveDriveKinematics
+from wpimath.kinematics import SwerveDrive2Kinematics, SwerveModuleState
 
 
 
@@ -99,7 +99,7 @@ rear_left_location = Translation2d(-PHYS.wheelbase_meters / 2,  PHYS.trackwidth_
 rear_right_location = Translation2d(-PHYS.wheelbase_meters / 2, -PHYS.trackwidth_meters / 2)
 
 # Main shared kinematics object
-SWERVE_KINEMATICS = SwerveDriveKinematics(
+SWERVE_KINEMATICS = SwerveDrive2Kinematics(
     front_left_location,
     front_right_location,
     rear_left_location,

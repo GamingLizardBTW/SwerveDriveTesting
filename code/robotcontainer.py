@@ -12,7 +12,7 @@ from commands2.button import Trigger
 from constants import OP
 #from wpilib import XboxController
 from wpilib import PS5Controller
-from constants import ELEC, SW
+from constants import ELEC, SW, MECH
 
 # Subsystems
 import subsystems.FirstMotorSubsystem
@@ -41,7 +41,7 @@ class RobotContainer:
         self.swervedrivesub = subsystems.SwerveDriveSubsystem.SwerveDriveSubsystemClass()
 
         # Set default command for second motor
-        self.secondmotorsub.setDefaultCommand(TriggerSpin(self.secondmotorsub, self.PS5))
+        #self.secondmotorsub.setDefaultCommand(TriggerSpin(self.secondmotorsub, self.PS5))
 
         # Set default command for swerve drive
         self.swervedrivesub.setDefaultCommand(SwerveDriveCommand(self.swervedrivesub, self.PS5))

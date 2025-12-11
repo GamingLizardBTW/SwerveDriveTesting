@@ -92,12 +92,12 @@ sw_data = {
 SW = namedtuple("Data", sw_data.keys())(**sw_data)
 
 # -----------------------------
-# Swerve module positions (Translation2d)
+# Swerve module positions (Translation2d with explicit float casts)
 # -----------------------------
-front_left_location  = Translation2d(PHYS.wheelbase_meters / 2,  PHYS.trackwidth_meters / 2)
-front_right_location = Translation2d(PHYS.wheelbase_meters / 2, -PHYS.trackwidth_meters / 2)
-rear_left_location   = Translation2d(-PHYS.wheelbase_meters / 2,  PHYS.trackwidth_meters / 2)
-rear_right_location  = Translation2d(-PHYS.wheelbase_meters / 2, -PHYS.trackwidth_meters / 2)
+front_left_location  = Translation2d(float(PHYS.wheelbase_meters) / 2,  float(PHYS.trackwidth_meters) / 2)
+front_right_location = Translation2d(float(PHYS.wheelbase_meters) / 2, -float(PHYS.trackwidth_meters) / 2)
+rear_left_location   = Translation2d(-float(PHYS.wheelbase_meters) / 2,  float(PHYS.trackwidth_meters) / 2)
+rear_right_location  = Translation2d(-float(PHYS.wheelbase_meters) / 2, -float(PHYS.trackwidth_meters) / 2)
 
 # -----------------------------
 # Swerve drive kinematics object

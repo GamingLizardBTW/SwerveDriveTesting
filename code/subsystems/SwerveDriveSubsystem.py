@@ -7,8 +7,7 @@ from wpimath.kinematics import SwerveDrive2Kinematics, SwerveModuleState
 from phoenix6.hardware import TalonFX, CANcoder
 from phoenix6.controls import PositionVoltage, VelocityVoltage
 from phoenix6.configs import TalonFXConfiguration
-
-
+import commands2
 
 class SwerveModule:
     def __init__(self, drive_motor_id, steer_motor_id, encoder_id, angle_offset_deg):
@@ -68,7 +67,7 @@ class SwerveModule:
         self.drive_motor.set_control(VelocityVoltage(rps))
 
 
-class SwerveDriveSubsystemClass(wpilib.SubsystemBase):
+class SwerveDriveSubsystemClass(commands2.Subsystem):
     def __init__(self):
         super().__init__()
 

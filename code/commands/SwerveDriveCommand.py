@@ -1,3 +1,5 @@
+import logging
+logger = logging.getLogger("swervedrivesubsystemlogger")
 import commands2
 from wpilib import SmartDashboard
 from constants import OP, SW
@@ -10,9 +12,10 @@ class SwerveDriveCommand(commands2.Command):
     """
     def __init__(self, swerve_subsystem, controller):
         super().__init__()
-        self.swerve = swerve_subsystem
+        self.swervesub = swerve_subsystem
         self.controller = controller
         self.addRequirements(swerve_subsystem)
+        logger.info("TriggerSpin Command Initialized")
 
     def execute(self):
 
@@ -30,4 +33,8 @@ class SwerveDriveCommand(commands2.Command):
         SmartDashboard.putNumber("Swerve X Speed", x_speed)
         SmartDashboard.putNumber("Swerve Y Speed", y_speed)
         SmartDashboard.putNumber("Swerve Rotation Speed", rot_speed)
+
+    def end(self, interrupted: bool):
+        self.swervesub.stop()
+        logger.info("Swerve Drive Ended")
 

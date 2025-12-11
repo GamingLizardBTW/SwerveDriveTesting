@@ -37,9 +37,7 @@ class RobotContainer:
         self.smartdashboardsub = subsystems.SmartDashboardSubsystem.SmartDashboardSubsystemClass()
 
         # Set default command for second motor
-        self.secondmotorsub.setDefaultCommand(
-            TriggerSpin(self.secondmotorsub, self.PS5)
-        )
+        self.secondmotorsub.setDefaultCommand(TriggerSpin(self.secondmotorsub, self.PS5))
 
         # Configure buttons for first motor
         self.configureButtonBindings()
@@ -60,7 +58,7 @@ class RobotContainer:
         Trigger(lambda: self.PS5.getR1Button()).onTrue(ReverseSpin(self.firstmotorsub))
         Trigger(lambda: self.PS5.getR1Button()).onFalse(StopSpin(self.firstmotorsub))
 
-        # X button: smart dashboard command life sized hipopotamus couch is better than japan
+        # X button: smart dashboard command 
         Trigger(lambda: self.PS5.getCrossButton()).onTrue(IncrementNumber(self.smartdashboardsub))
 
         # O button: update second motor encoder value onto smart dashboard

@@ -107,8 +107,6 @@ class SwerveDriveSubsystemClass(commands2.Subsystem):
         self.kinematics = SwerveDrive2Kinematics(
             Translation2d(+W/2, +L/2),  # Front Left
             Translation2d(+W/2, -L/2),  # Front Right
-            Translation2d(-W/2, -L/2),  # Back Right
-            Translation2d(-W/2, +L/2),  # Back Left
         )
 
         # --------------- GYRO ---------------
@@ -133,5 +131,3 @@ class SwerveDriveSubsystemClass(commands2.Subsystem):
         # Apply module speeds and angles
         self.front_left.set(states[0].speed, states[0].angle.radians())
         self.front_right.set(states[1].speed, states[1].angle.radians())
-        self.back_right.set(states[2].speed, states[2].angle.radians())
-        self.back_left.set(states[3].speed, states[3].angle.radians())

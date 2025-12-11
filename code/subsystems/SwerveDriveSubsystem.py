@@ -133,4 +133,6 @@ class SwerveDriveSubsystemClass(commands2.Subsystem):
         # Apply module speeds and angles
         self.front_left.set(states[0].speed, states[0].angle.radians())
         self.front_right.set(states[1].speed, states[1].angle.radians())
+        #self.rear_left.set(states[2].speed, states[2].angle.radians())
+        #self.rear_right.set(states[3].speed, states[3].angle.radians())
 

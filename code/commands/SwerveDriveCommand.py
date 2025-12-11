@@ -15,6 +15,8 @@ class SwerveDriveCommand(commands2.Command):
         self.swervesub = swerve_subsystem
         self.controller = controller
         self.addRequirements(swerve_subsystem)
+
+    def initialize(self):
         logger.info("TriggerSpin Command Initialized")
 
     def execute(self):
@@ -38,3 +40,5 @@ class SwerveDriveCommand(commands2.Command):
         self.swervesub.stop()
         logger.info("Swerve Drive Ended")
 
+    def isFinished(self):
+        return False

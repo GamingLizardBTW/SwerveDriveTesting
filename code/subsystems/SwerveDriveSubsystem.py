@@ -107,8 +107,8 @@ class SwerveDriveSubsystemClass(commands2.Subsystem):
         self.kinematics = SwerveDrive2Kinematics(
             Translation2d(+W/2, +L/2),  # Front Left
             Translation2d(+W/2, -L/2),  # Front Right
-            Translation2d(-L/2, W/2), # Back Left 
-            Translation2d(-L/2, -W/2) # Back Right 
+            #Translation2d(-L/2, W/2), # Back Left 
+            #Translation2d(-L/2, -W/2) # Back Right 
         )
 
         # --------------- GYRO ---------------

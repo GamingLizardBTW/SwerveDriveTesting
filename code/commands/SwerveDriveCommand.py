@@ -37,7 +37,6 @@ class SwerveDriveCommand(commands2.Command):
         SmartDashboard.putNumber("Swerve Rotation Speed", rot_speed)
 
     def end(self, interrupted: bool):
-        self.swervesub.stop()
         logger.info("Swerve Drive Ended")
 
     def isFinished(self):

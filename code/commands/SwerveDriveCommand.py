@@ -27,7 +27,7 @@ class SwerveDriveCommand(commands2.Command):
         rot_speed = self.controller.getRightX() * SW.swerve_max_angular_speed_rps
 
         #Drive the swerve subsystem
-        self.swerve.drive(x_speed, y_speed, rot_speed, field_relative=True)
+        self.swervesub.drive(x_speed, y_speed, rot_speed, field_relative=True)
 
         #Shows movement speed
         SmartDashboard.putNumber("Swerve X Speed", x_speed)

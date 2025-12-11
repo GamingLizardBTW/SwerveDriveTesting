@@ -18,8 +18,8 @@ class SwerveModule:
         self.abs_encoder = CANcoder(encoder_id)
 
         # Set neutral modes from constants
-        self.drive_motor.set_neutral_mode(ELEC.driveMotor_neutral)
-        self.steer_motor.set_neutral_mode(ELEC.steerMotor_neutral)
+        self.drive_motor.setNeutralMode(ELEC.driveMotor_neutral)
+        self.steer_motor.setNeutralMode(ELEC.steerMotor_neutral)
 
         # Physical mounting offset
         self.angle_offset = math.radians(angle_offset_deg)

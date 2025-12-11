@@ -1,74 +1,107 @@
 """
-This file defines constants related to your robot.  These constants include:
+This file defines constants related to your robot. These constants include:
 
- * Physical constants (exterior dimensions, wheel base)
-
+ * Physical constants (exterior dimensions, wheelbase)
  * Mechanical constants (gear reduction ratios)
-
- * Electrical constants (current limits, CAN bus IDs, roboRIO slot numbers)
-
- * Operation constants (desired max velocity, max turning speed)
-
- * Software constants (USB ID for driver joystick)
+ * Electrical constants (current limits, CAN bus IDs)
+ * Operation constants (desired max velocity, controller port)
+ * Software constants (swerve settings, PID, motion magic, etc.)
 """
 
 from collections import namedtuple
+from wpimath.geometry import Translation2d
+from wpimath.kinematics import SwerveDriveKinematics
 
-# Physical constants, e.g. wheel circumference, physical dimensions
+
+
 phys_data = {
+    # Replace these with robot dimensions in meters
+    "wheelbase_meters": 0.5,     #length of robot from front to back 
+    "trackwidth_meters": 0.5,    #lenght of robot from left to right
 }
-PHYS = namedtuple("Data", phys_data.keys())(**phys_data)
+PHYS = namedtuple("PHYS", phys_data.keys())(**phys_data)
 
-# Mechanical constants, e.g. gearing ratios, whether motors are inverted
+
+
 mech_data = {
+    #Add gear ratios here when needed later
 }
-MECH = namedtuple("Data", mech_data.keys())(**mech_data)
+MECH = namedtuple("MECH", mech_data.keys())(**mech_data)
 
-# Electrical constants, e.g. current limits, CAN bus IDs, RoboRIO port numbers
+
 elec_data = {
-  ## First motor
-  "first_motor_CAN_ID": 3,
-  "first_motor_forward":0.5,
-  "first_motor_reverse":-0.5,
-  "first_motor_stop":0.0,
+    #First motor
+    "first_motor_CAN_ID": 3,
+    "first_motor_forward": 0.5,
+    "first_motor_reverse": -0.5,
+    "first_motor_stop": 0.0,
 
-  ## Second motor
-  "second_motor_CAN_ID": 2,
-  "second_motor_forward":1.0,
-  "second_motor_reverse":-1.0,
-  "second_motor_stop":0.0,
+    #Second motor
+    "second_motor_CAN_ID": 2,
+    "second_motor_forward": 1.0,
+    "second_motor_reverse": -1.0,
+    "second_motor_stop": 0.0,
 
-  ## Limit Switch
-  "limit_switch_port":0,
+    "limit_switch_port": 0,
 
+    #Swerve module motors
+    "front_left_drive_id": 1,
+    "front_left_turn_id": 2,
+
+    "front_right_drive_id": 3,
+    "front_right_turn_id": 4,
+
+    "rear_left_drive_id": 5,
+    "rear_left_turn_id": 6,
+
+    "rear_right_drive_id": 7,
+    "rear_right_turn_id": 8,
 }
-ELEC = namedtuple("Data", elec_data.keys())(**elec_data)
+ELEC = namedtuple("ELEC", elec_data.keys())(**elec_data)
 
-# Operation constants, e.g. preferred brake mode, which joystick to use
+
+
 op_data = {
     "joystick_port": 0,
 }
-OP = namedtuple("Data", op_data.keys())(**op_data)
+OP = namedtuple("OP", op_data.keys())(**op_data)
 
-# Software constants, e.g. PID values, absolute encoder zero points
+
+
 sw_data = {
     #First motor PID
-    "First_ks": 0.2,     # Static friction
-    "First_kv": 0.12,    # Velocity feedforward
-    "First_ka": 0.0,     # Acceleration feedforward raise if system needs to be faster
+    "First_ks": 0.2,
+    "First_kv": 0.12,
+    "First_ka": 0.0,
 
-    "First_kp": 3.0,     # Too high and will cause oscillation, too low will make it not reach desired place
-    "First_ki": 0.5,     # Helps fix small errors over time 
-    "First_kd": 0.1,     # Stabalizing, fixes over shoot
+    "First_kp": 3.0,
+    "First_ki": 0.5,
+    "First_kd": 0.1,
 
-    # Motion Magic
-    "First_Cruise_Velocity": 40,   # rotations/sec   Max Speed
-    "First_Acceleration": 80,      # rotations/sec^2 How fast it can accelerate
-    "First_Jerk": 0,               # optional        First push to start acceleration
+    "First_Cruise_Velocity": 40,
+    "First_Acceleration": 80,
+    "First_Jerk": 0,
 
-    "First_Gear_Ratio": 1.0,       #change if motor has gearing
+    "First_Gear_Ratio": 1.0,
+    "FirstMotorSetpoint": 10.0,
 
-    # Setpoint for testing
-    "FirstMotorSetpoint": 10.0,     #number of rotations to move to
+    # Swerve speed limits
+    "swerve_max_speed_mps": 3.0,           # Robot max linear speed
+    "swerve_max_angular_speed_rps": 3.0,   # Robot max turning speed
 }
-SW = namedtuple("Data", sw_data.keys())(**sw_data)
+SW = namedtuple("SW", sw_data.keys())(**sw_data)
+
+
+# Module physical locations relative to robot center
+front_left_location = Translation2d(PHYS.wheelbase_meters / 2,  PHYS.trackwidth_meters / 2)
+front_right_location = Translation2d(PHYS.wheelbase_meters / 2, -PHYS.trackwidth_meters / 2)
+rear_left_location = Translation2d(-PHYS.wheelbase_meters / 2,  PHYS.trackwidth_meters / 2)
+rear_right_location = Translation2d(-PHYS.wheelbase_meters / 2, -PHYS.trackwidth_meters / 2)
+
+# Main shared kinematics object
+SWERVE_KINEMATICS = SwerveDriveKinematics(
+    front_left_location,
+    front_right_location,
+    rear_left_location,
+    rear_right_location
+)

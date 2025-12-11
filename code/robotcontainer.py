@@ -18,11 +18,14 @@ from constants import ELEC, SW
 import subsystems.FirstMotorSubsystem
 import subsystems.SecondMotorSubsystem
 import subsystems.SmartDashboardSubsystem
+import subsystems.SwerveDriveSubsystem
 
 # Commands
 from commands.FirstMotorCommands import ForwardSpin, ReverseSpin, StopSpin, MoveToPosition
 from commands.SecondMotorCommands import TriggerSpin, DisplayEncoderValue
 from commands.SmartDashboardCommands import IncrementNumber
+from commands.SwerveDriveCommand import SwerveDriveCommand
+
 
 class RobotContainer:
 
@@ -35,9 +38,13 @@ class RobotContainer:
         self.firstmotorsub = subsystems.FirstMotorSubsystem.FirstMotorSubsystemClass()
         self.secondmotorsub = subsystems.SecondMotorSubsystem.SecondMotorSubsystemClass()
         self.smartdashboardsub = subsystems.SmartDashboardSubsystem.SmartDashboardSubsystemClass()
+        self.swervedrivesub = subsystems.SwerveDriveSubsystem.SwerveDriveSubsystemClass()
 
         # Set default command for second motor
         self.secondmotorsub.setDefaultCommand(TriggerSpin(self.secondmotorsub, self.PS5))
+
+        # Set default command for swerve drive
+        self.swervedrivesub.setDefaultCommand(SwerveDriveCommand(self.swervedrivesub, self.PS5))
 
         # Configure buttons for first motor
         self.configureButtonBindings()

@@ -40,6 +40,10 @@ class RobotContainer:
         self.smartdashboardsub = subsystems.SmartDashboardSubsystem.SmartDashboardSubsystemClass()
         self.swervedrivesub = subsystems.SwerveDriveSubsystem.SwerveDriveSubsystemClass()
 
+        #Reset Gyro to 0 when robot turns on
+        self.swervedrivesub.gryo.reset()
+
+
         # Set default command for second motor
         #self.secondmotorsub.setDefaultCommand(TriggerSpin(self.secondmotorsub, self.PS5))
 

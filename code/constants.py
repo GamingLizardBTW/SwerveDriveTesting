@@ -11,13 +11,14 @@ This file defines constants related to your robot. These constants include:
 from collections import namedtuple
 from wpimath.geometry import Translation2d
 from wpimath.kinematics import SwerveDrive2Kinematics, SwerveModuleState
+import phoenix6
 
 # -----------------------------
 # Physical constants
 # -----------------------------
 phys_data = {
-    "wheelbase_meters": 0.5,   # front ↔ back distance
-    "trackwidth_meters": 0.5,  # left ↔ right distance
+    "wheelbase_meters": 0.58,
+    "trackwidth_meters": 0.58,
     "wheel_diameter_meters": 0.1016,  # 4-inch wheels
 }
 
@@ -27,8 +28,10 @@ PHYS = namedtuple("Data", phys_data.keys())(**phys_data)
 # Mechanical constants
 # -----------------------------
 mech_data = {
+    "swerve_module_driving_gearing_ratio": 6.75,  # SDS Mk4i L2  6.75 rotation on motor per 1 rotatio on drivetrain
+    "swerve_module_steering_gearing_ratio": 150 / 7,  # SDS Mk4i
     "first_motor_inverted": False,
-    "second_motor_inverted": False,
+    "second_motor_inverted": True,
     # Add more gearing or inversion constants here
 }
 
@@ -49,6 +52,21 @@ elec_data = {
     "second_motor_stop": 0.0,
 
     "limit_switch_port": 0,
+
+    "RF_drive_CAN_ID": 3,
+    "RF_steer_CAN_ID": 20,
+    "RF_encoder_DIO": 8,
+    "RB_steer_CAN_ID": 12,
+    "RB_drive_CAN_ID": 1,
+    "RB_encoder_DIO": 7,
+    "LB_steer_CAN_ID": 8,
+    "LB_drive_CAN_ID": 7,
+    "LB_encoder_DIO": 9,
+    "LF_steer_CAN_ID": 11,
+    "LF_drive_CAN_ID": 5,
+    "LF_encoder_DIO": 0,  
+    "driveMotor_neutral": phoenix6.signals.NeutralModeValue(1),
+    "steerMotor_neutral": phoenix6.signals.NeutralModeValue(1),
 }
 
 ELEC = namedtuple("Data", elec_data.keys())(**elec_data)

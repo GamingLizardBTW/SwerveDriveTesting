@@ -41,7 +41,7 @@ class RobotContainer:
         self.swervedrivesub = subsystems.SwerveDriveSubsystem.SwerveDriveSubsystemClass()
 
         #Reset Gyro to 0 when robot turns on
-        self.swervedrivesub.gryo.reset()
+        #self.swervedrivesub.gryo.reset()
 
 
         # Set default command for second motor
